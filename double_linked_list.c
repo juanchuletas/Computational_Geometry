@@ -7,7 +7,7 @@ struct node
 	struct node *next;
 	struct node *prev;
 };
-struct node *root = NULL;
+//struct node *root = NULL;
 
 struct node *create_dll(struct node *root)
 {
@@ -48,14 +48,37 @@ void display(struct node *root)
 		p = p->next;
 	}
 }
+struct node *add_begin(struct node *root)
+{
+	struct node *new_node;
+	new_node = (struct node *)malloc(sizeof(struct node));
+	printf("Enter data at begin:\n");
+	scanf("%d",&new_node->data);
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	if(root==NULL)
+	{
+		root = new_node;
+	}
+	else
+	{
+		//FIRST RIGHT CONECTIONS
+		new_node->next = root;
+		root->prev = new_node;
+		root = new_node;
+	}
+	return root;
+}
 int main (void)
 {
+	struct node *root=NULL;
 	int option;
 	do
 	{
 		printf("\n\n****MAIN MENU****\n");
 		printf("1: Create a double linked list\n");
 		printf("2: Display the double linked list\n");
+		printf("3: Add node at begin of the list\n");
 		printf("12: EXIT\n");
 		printf("Enter your option:\n");
 		scanf("%d",&option);
@@ -65,6 +88,8 @@ int main (void)
 				printf("DOUBLE LINKED LIST CREATED\n");
 				break;
 			case 2: display(root);
+				break;
+			case 3: root = add_begin(root);
 				break;
 		}
 	}while(option!=12);
