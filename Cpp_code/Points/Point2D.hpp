@@ -18,6 +18,7 @@ class Point2D
 		virtual void print(ostream &strm); //Print the vectors
 		int classify(Point2D&, Point2D&);
 		double length(void);
+		void setValues(double _x,double _y);
 		friend Point2D operator*(double scalar, Point2D&);// Friend class because its first operand is not  of type Point!!
 		//Relational operators: to compare vectors!
 		int operator==(Point2D&);
@@ -57,6 +58,11 @@ double Point2D::length()
 {
 	return sqrt(x*x + y*y);
 
+}
+void Point2D::setValues(double _x,double _y)
+{
+	x = _x;
+	y = _y;	
 }
 int Point2D::classify(Point2D &p0, Point2D &p1)
 {
