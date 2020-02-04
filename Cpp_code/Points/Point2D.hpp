@@ -19,6 +19,7 @@ class Point2D
 		int classify(Point2D&, Point2D&);
 		double length(void);
 		void setValues(double _x,double _y);
+		int getOrientation(Point2D&,Point2D&);
 		friend Point2D operator*(double scalar, Point2D&);// Friend class because its first operand is not  of type Point!!
 		//Relational operators: to compare vectors!
 		int operator==(Point2D&);
@@ -99,4 +100,23 @@ int Point2D::operator!=(Point2D &p)
 {
 	return (x!=p.x && y!=p.y);
 	//return !(*this == p);
+}
+int Point2D::getOrientation(Point2D &p0, Point2D &p2)
+{
+	Point2D p1 = *this;
+	Point2D a = p1 - p0;
+        Point2D b = p2 - p1;
+        double sa = a.x*b.y - b.x*a.y;
+        if(sa>0.0)
+        {
+                return 1;
+        }
+        else if(sa<0.0)
+        {
+                return -1;
+        }
+
+        return 0;
+
+
 }
