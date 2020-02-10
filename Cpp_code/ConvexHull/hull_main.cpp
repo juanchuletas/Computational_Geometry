@@ -1,6 +1,7 @@
 #include<iostream>
 #include <iomanip>
-#include "../Points/Point2D.hpp"
+//#include "../Points/Point2D.hpp"
+#include "../Edge/Edge.hpp"
 #include <ctime>
 #include <vector>
 
@@ -67,7 +68,7 @@ int main()
 
 
 	std::cout<<"The random number is: "<<secretNum<<"\n";
-	int N = 20;
+	int N = 50;
 	Point2D points[N];
 
 	for(int i=0; i<N; i++)
@@ -77,6 +78,7 @@ int main()
 		points[i].setValues(x,y);
 		points[i].print(cout);
 	}
+	Edge e1(points[0],points[1]);
 	createConvexHull(points,N);
 	createVTK(points,N);
 
